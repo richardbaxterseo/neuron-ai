@@ -34,9 +34,6 @@ define('NEURON_AI_PATH', plugin_dir_path(__FILE__));
 define('NEURON_AI_URL', plugin_dir_url(__FILE__));
 define('NEURON_AI_BASENAME', plugin_basename(__FILE__));
 
-// In neuron-ai.php before plugin initialization
-require_once NEURON_AI_PATH . 'includes/class-api.php';
-
 // Check for required PHP version
 if (version_compare(PHP_VERSION, '7.4', '<')) {
     add_action('admin_notices', function() {
@@ -77,14 +74,13 @@ function neuron_ai_autoloader($class_name) {
         return;
     }
 
-    // Check Settings namespace first
-    if (strpos($class_name, 'NeuronAI\\Settings\\') === 0) {
-        $class_name_only = str_replace('NeuronAI\\Settings\\', '', $class_name);
-        $file_name = strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', $class_name_only));
-        $file = NEURON_AI_PATH . 'includes/settings/class-' . $file_name . '.php';
+    // Special case for traits
+    if (strpos($class_name, 'NeuronAI\\Traits\\') === 0) {
+        $trait_name = substr($class_name, strlen('NeuronAI\\Traits\\'));
+        $trait_file = NEURON_AI_PATH . 'includes/traits/trait-' . strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', $trait_name)) . '.php';
         
-        if (file_exists($file)) {
-            require_once $file;
+        if (file_exists($trait_file)) {
+            require_once $trait_file;
             return;
         }
     }
