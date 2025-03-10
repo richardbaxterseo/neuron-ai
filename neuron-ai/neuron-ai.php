@@ -99,16 +99,30 @@ function neuron_ai_autoloader($class_name) {
     }
 }
 
-    // For API class specifically
-    if (strtolower($class_file) === 'api') {
-        $file = NEURON_AI_PATH . 'includes/class-api.php';
-    if (file_exists($file)) {
-        require_once $file;
+    /**
+ * Autoload classes.
+ *
+ * @param string $class_name The class name to load.
+ */
+function neuron_ai_autoloader($class_name) {
+    // Only load classes in the NeuronAI namespace
+    if (strpos($class_name, 'NeuronAI\\') !== 0) {
         return;
+    }
+
+    // Check Settings namespace first
+    if (strpos($class_name, 'NeuronAI\\Settings\\') === 0) {
+        $class_name_only = str_replace('NeuronAI\\Settings\\', '', $class_name);
+        $file_name = strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', $class_name_only));
+        $file = NEURON_AI_PATH . 'includes/settings/class-' . $file_name . '.php';
+        
+        if (file_exists($file)) {
+            require_once $file;
+            return;
         }
     }
 
-    // Remove namespace prefix
+    // Convert class name to file name format
     $class_file = str_replace('NeuronAI\\', '', $class_name);
     
     // Convert namespace separators to directory separators
@@ -116,6 +130,15 @@ function neuron_ai_autoloader($class_name) {
     
     // Convert class name to file name format (CamelCase to kebab-case)
     $class_file = strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', $class_file));
+    
+    // For API class specifically
+    if ($class_file === 'api') {
+        $file = NEURON_AI_PATH . 'includes/class-api.php';
+        if (file_exists($file)) {
+            require_once $file;
+            return;
+        }
+    }
     
     // Build the complete path
     $file = NEURON_AI_PATH . 'includes' . DIRECTORY_SEPARATOR . 'class-' . $class_file . '.php';
@@ -129,7 +152,8 @@ function neuron_ai_autoloader($class_name) {
     // Check for file in subdirectories
     $subdirs = ['providers', 'utils', 'blocks', 'traits', 'settings'];
     foreach ($subdirs as $subdir) {
-        $namespace_part = strtolower(explode('\\', $class_name)[1] ?? '');
+        $namespace_parts = explode('\\', $class_name);
+        $namespace_part = isset($namespace_parts[1]) ? strtolower($namespace_parts[1]) : '';
         
         // If namespace matches subdir, look there
         if ($namespace_part === $subdir) {
@@ -150,6 +174,25 @@ function neuron_ai_autoloader($class_name) {
             return;
         }
     }
+    
+    // Special case for interfaces
+    $interface_file = NEURON_AI_PATH . 'includes/providers/interface-' . $class_file . '.php';
+    if (file_exists($interface_file)) {
+        require_once $interface_file;
+        return;
+    }
+    
+    // Special case for traits
+    $trait_parts = explode('\\', $class_name);
+    if (count($trait_parts) >= 2 && $trait_parts[1] === 'Traits') {
+        $trait_name = end($trait_parts);
+        $trait_file = NEURON_AI_PATH . 'includes/traits/trait-' . strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', $trait_name)) . '.php';
+        if (file_exists($trait_file)) {
+            require_once $trait_file;
+            return;
+        }
+    }
+}
     
     // Special case for interfaces
     $interface_file = NEURON_AI_PATH . 'includes/providers/interface-' . $class_file . '.php';
