@@ -27,15 +27,15 @@ if (!defined('WPINC')) {
     die;
 }
 
-// In neuron-ai.php before plugin initialization
-require_once NEURON_AI_PATH . 'includes/class-api.php';
-
 // Define plugin constants
 define('NEURON_AI_VERSION', '1.0.0');
 define('NEURON_AI_FILE', __FILE__);
 define('NEURON_AI_PATH', plugin_dir_path(__FILE__));
 define('NEURON_AI_URL', plugin_dir_url(__FILE__));
 define('NEURON_AI_BASENAME', plugin_basename(__FILE__));
+
+// In neuron-ai.php before plugin initialization
+require_once NEURON_AI_PATH . 'includes/class-api.php';
 
 // Check for required PHP version
 if (version_compare(PHP_VERSION, '7.4', '<')) {
