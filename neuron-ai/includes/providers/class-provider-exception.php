@@ -67,10 +67,10 @@ class ProviderException extends \Exception {
      * @since    1.0.0
      * @param    string       $message            Error message.
      * @param    int          $code               Error code.
-     * @param    \Exception   $previous           Previous exception (optional).
+     * @param    \Throwable   $previous           Previous exception (optional).
      * @param    array        $technical_details  Technical details (optional).
      */
-    public function __construct($message, $code, \Exception $previous = null, array $technical_details = []) {
+    public function __construct($message, $code, ?\Throwable $previous = null, array $technical_details = []) {
         parent::__construct($message, $code, $previous);
         
         $this->previous = $previous;
@@ -167,5 +167,15 @@ class ProviderException extends \Exception {
         }
         
         return $details;
+    }
+    
+    /**
+     * Check if the error is related to rate limiting.
+     *
+     * @since    1.0.0
+     * @return   bool     Whether the error is related to rate limiting.
+     */
+    public function isRateLimit() {
+        return $this->code === self::ERROR_RATE_LIMIT_EXCEEDED;
     }
 }
