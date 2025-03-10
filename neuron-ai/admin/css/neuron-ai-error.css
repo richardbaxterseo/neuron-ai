@@ -1,0 +1,164 @@
+/**
+ * Neuron AI Error Styling
+ */
+
+/* Error containers */
+.neuron-ai-error {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-left: 4px solid #dc3545;
+    color: #721c24;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 3px;
+    position: relative;
+}
+
+.neuron-ai-error p {
+    margin: 5px 0;
+    padding: 0;
+}
+
+.neuron-ai-block-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+    border-left: 4px solid #dc3545;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* Technical details section */
+.neuron-ai-error-details {
+    margin-top: 12px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 12px;
+}
+
+.neuron-ai-error-details pre {
+    max-height: 200px;
+    overflow-y: auto;
+    margin: 5px 0;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border: 1px solid #eee;
+    border-radius: 2px;
+    white-space: pre-wrap;
+}
+
+/* Action links */
+.neuron-ai-error-action {
+    display: inline-block;
+    margin-left: 5px;
+    padding: 3px 8px;
+    background-color: #eee;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #0073aa;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.neuron-ai-error-action:hover {
+    background-color: #ddd;
+    color: #006799;
+    text-decoration: none;
+}
+
+/* jQuery notifications */
+.neuron-ai-notifications {
+    position: fixed;
+    top: 32px;
+    right: 20px;
+    width: 300px;
+    z-index: 9999;
+}
+
+.neuron-ai-notification {
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    animation: neuron-ai-notification-slide-in 0.3s ease-out;
+    position: relative;
+}
+
+.neuron-ai-notification-error {
+    background-color: #f8d7da;
+    border-left: 4px solid #dc3545;
+    color: #721c24;
+}
+
+.neuron-ai-notification p {
+    margin: 0 0 8px 0;
+    padding-right: 20px;
+}
+
+.neuron-ai-notification-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0.7;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    line-height: 1;
+}
+
+.neuron-ai-notification-close:hover {
+    opacity: 1;
+}
+
+@keyframes neuron-ai-notification-slide-in {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Error indicators in blocks */
+.neuron-text-block.has-error,
+.neuron-search-block.has-error {
+    border: 1px solid #f5c6cb;
+    box-shadow: 0 0 0 1px #f5c6cb;
+}
+
+/* Loading state with error handling */
+.neuron-ai-loading.has-error {
+    color: #721c24;
+}
+
+/* Block-specific error styling */
+.neuron-text-block .neuron-ai-block-error {
+    margin-bottom: 10px;
+}
+
+.neuron-search-block .neuron-ai-block-error {
+    margin-bottom: 15px;
+}
+
+/* Error display in settings */
+.neuron-ai-settings-error {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-left: 4px solid #dc3545;
+    color: #721c24;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 3px;
+}

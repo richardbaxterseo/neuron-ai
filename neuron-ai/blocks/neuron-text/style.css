@@ -1,0 +1,19 @@
+/**
+ * Front-end styles for the Neuron Text block.
+ */
+
+ .wp-block-neuron-ai-neuron-text {
+    position: relative;
+}
+
+.wp-block-neuron-ai-neuron-text .neuron-text-content {
+    line-height: 1.6;
+}
+
+.wp-block-neuron-ai-neuron-text .neuron-text-content p:first-child {
+    margin-top: 0;
+}
+
+.wp-block-neuron-ai-neuron-text .neuron-text-content p:last-child {
+    margin-bottom: 0;
+}

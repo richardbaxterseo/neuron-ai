@@ -1,0 +1,47 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 2,
+    "name": "neuron-ai/neuron-text",
+    "version": "1.0.0",
+    "title": "Neuron Text",
+    "category": "neuron-ai",
+    "icon": "editor-textcolor",
+    "description": "A rich text block with AI enhancement capabilities",
+    "keywords": ["ai", "text", "enhance", "content", "neuron"],
+    "supports": {
+        "html": false,
+        "anchor": true,
+        "className": true
+    },
+    "attributes": {
+        "content": {
+            "type": "string",
+            "source": "html",
+            "selector": "div.neuron-text-content"
+        },
+        "conversations": {
+            "type": "array",
+            "default": []
+        },
+        "isEnhancing": {
+            "type": "boolean",
+            "default": false
+        },
+        "enhancementOptions": {
+            "type": "object",
+            "default": {
+                "tone": "professional",
+                "reading_level": "universal",
+                "instructions": ""
+            }
+        },
+        "provider": {
+            "type": "string",
+            "default": ""
+        }
+    },
+    "textdomain": "neuron-ai",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./editor.css",
+    "style": "file:./style.css"
+}

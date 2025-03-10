@@ -1,0 +1,74 @@
+/**
+ * Editor styles for the Neuron Search block.
+ */
+
+ .wp-block-neuron-ai-neuron-search {
+    position: relative;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 15px;
+    background-color: #fff;
+}
+
+.wp-block-neuron-ai-neuron-search .neuron-search-query-container {
+    margin-bottom: 20px;
+}
+
+.wp-block-neuron-ai-neuron-search .neuron-search-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.wp-block-neuron-ai-neuron-search .neuron-search-placeholder {
+    padding: 20px;
+    text-align: center;
+    color: #757575;
+    border: 1px dashed #d0d0d0;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+}
+
+.wp-block-neuron-ai-neuron-search .neuron-search-results-container {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.wp-block-neuron-ai-neuron-search .neuron-search-results {
+    min-height: 100px;
+}
+
+.wp-block-neuron-ai-neuron-search .neuron-ai-error {
+    margin: 10px 0;
+    padding: 10px;
+    border-left: 4px solid #d94f4f;
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.wp-block-neuron-ai-neuron-search .neuron-search-results h1,
+.wp-block-neuron-ai-neuron-search .neuron-search-results h2,
+.wp-block-neuron-ai-neuron-search .neuron-search-results h3,
+.wp-block-neuron-ai-neuron-search .neuron-search-results h4,
+.wp-block-neuron-ai-neuron-search .neuron-search-results h5,
+.wp-block-neuron-ai-neuron-search .neuron-search-results h6 {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+.wp-block-neuron-ai-neuron-search .neuron-search-results h1:first-child,
+.wp-block-neuron-ai-neuron-search .neuron-search-results h2:first-child,
+.wp-block-neuron-ai-neuron-search .neuron-search-results h3:first-child {
+    margin-top: 0;
+}
+
+.wp-block-neuron-ai-neuron-search .neuron-search-results p {
+    margin-bottom: 1em;
+}
+
+.wp-block-neuron-ai-neuron-search .neuron-search-results ul,
+.wp-block-neuron-ai-neuron-search .neuron-search-results ol {
+    padding-left: 1.5em;
+    margin-bottom: 1em;
+}

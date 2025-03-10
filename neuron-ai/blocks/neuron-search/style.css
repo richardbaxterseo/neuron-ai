@@ -1,0 +1,46 @@
+/**
+ * Front-end styles for the Neuron Search block.
+ */
+
+ .wp-block-neuron-ai-neuron-search {
+    position: relative;
+    margin-bottom: 2em;
+}
+
+.wp-block-neuron-ai-neuron-search .neuron-search-query {
+    margin-bottom: 1em;
+    padding: 10px;
+    background-color: #f0f8ff;
+    border-left: 4px solid #3498db;
+    font-weight: normal;
+}
+
+.wp-block-neuron-ai-neuron-search .neuron-search-results {
+    line-height: 1.6;
+}
+
+.wp-block-neuron-ai-neuron-search .neuron-search-results h1,
+.wp-block-neuron-ai-neuron-search .neuron-search-results h2,
+.wp-block-neuron-ai-neuron-search .neuron-search-results h3,
+.wp-block-neuron-ai-neuron-search .neuron-search-results h4,
+.wp-block-neuron-ai-neuron-search .neuron-search-results h5,
+.wp-block-neuron-ai-neuron-search .neuron-search-results h6 {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+.wp-block-neuron-ai-neuron-search .neuron-search-results h1:first-child,
+.wp-block-neuron-ai-neuron-search .neuron-search-results h2:first-child,
+.wp-block-neuron-ai-neuron-search .neuron-search-results h3:first-child {
+    margin-top: 0;
+}
+
+.wp-block-neuron-ai-neuron-search .neuron-search-results p {
+    margin-bottom: 1em;
+}
+
+.wp-block-neuron-ai-neuron-search .neuron-search-results ul,
+.wp-block-neuron-ai-neuron-search .neuron-search-results ol {
+    padding-left: 1.5em;
+    margin-bottom: 1em;
+}

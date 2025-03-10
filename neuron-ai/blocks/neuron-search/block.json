@@ -1,0 +1,46 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 2,
+    "name": "neuron-ai/neuron-search",
+    "version": "1.0.0",
+    "title": "Neuron Search",
+    "category": "neuron-ai",
+    "icon": "search",
+    "description": "A research block powered by AI to search for information on specific topics",
+    "keywords": ["ai", "search", "research", "content", "neuron"],
+    "supports": {
+        "html": false,
+        "anchor": true,
+        "className": true
+    },
+    "attributes": {
+        "query": {
+            "type": "string",
+            "default": ""
+        },
+        "results": {
+            "type": "string",
+            "default": ""
+        },
+        "isSearching": {
+            "type": "boolean",
+            "default": false
+        },
+        "searchOptions": {
+            "type": "object",
+            "default": {
+                "detail_level": "medium",
+                "include_citations": true,
+                "format": "article"
+            }
+        },
+        "provider": {
+            "type": "string",
+            "default": ""
+        }
+    },
+    "textdomain": "neuron-ai",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./editor.css",
+    "style": "file:./style.css"
+}
