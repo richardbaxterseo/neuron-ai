@@ -61,7 +61,21 @@ function neuron_ai_ensure_directories() {
         }
     }
 }
+
 neuron_ai_ensure_directories();
+
+// In the neuron_ai_autoloader function in neuron-ai.php, modify the traits handling section:
+
+// Special case for traits
+$trait_parts = explode('\\', $class_name);
+if (count($trait_parts) > 1 && $trait_parts[1] === 'Traits') {
+    $trait_name = end($trait_parts);
+    $trait_file = NEURON_AI_PATH . 'includes/traits/trait-' . strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', $trait_name)) . '.php';
+    if (file_exists($trait_file)) {
+        require_once $trait_file;
+        return;
+    }
+}
 
 /**
  * Autoload classes.
@@ -75,15 +89,15 @@ function neuron_ai_autoloader($class_name) {
     }
 
     // Special case for traits
-    if (strpos($class_name, 'NeuronAI\\Traits\\') === 0) {
-        $trait_name = substr($class_name, strlen('NeuronAI\\Traits\\'));
+        $trait_parts = explode('\\', $class_name);
+    if (count($trait_parts) > 1 && $trait_parts[1] === 'Traits') {
+        $trait_name = end($trait_parts);
         $trait_file = NEURON_AI_PATH . 'includes/traits/trait-' . strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', $trait_name)) . '.php';
-        
-        if (file_exists($trait_file)) {
-            require_once $trait_file;
-            return;
-        }
+    if (file_exists($trait_file)) {
+        require_once $trait_file;
+        return;
     }
+}
 
     // For API class specifically
     if (strtolower($class_file) === 'api') {
@@ -158,6 +172,8 @@ function neuron_ai_autoloader($class_name) {
 
 // Register the autoloader
 spl_autoload_register('neuron_ai_autoloader');
+// In neuron-ai.php before plugin initialization
+require_once NEURON_AI_PATH . 'includes/class-api.php';
 
 // Activation and deactivation hooks
 register_activation_hook(__FILE__, 'activate_neuron_ai');
