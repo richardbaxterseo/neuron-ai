@@ -27,6 +27,9 @@ if (!defined('WPINC')) {
     die;
 }
 
+// In neuron-ai.php before plugin initialization
+require_once NEURON_AI_PATH . 'includes/class-api.php';
+
 // Define plugin constants
 define('NEURON_AI_VERSION', '1.0.0');
 define('NEURON_AI_FILE', __FILE__);
@@ -83,6 +86,15 @@ function neuron_ai_autoloader($class_name) {
         if (file_exists($file)) {
             require_once $file;
             return;
+        }
+    }
+
+    // For API class specifically
+    if (strtolower($class_file) === 'api') {
+        $file = NEURON_AI_PATH . 'includes/class-api.php';
+    if (file_exists($file)) {
+        require_once $file;
+        return;
         }
     }
 
